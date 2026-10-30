@@ -2,6 +2,7 @@
   "approvedParagraphs": [],
   "asOf": "2026-10-30",
   "attendance": null,
+  "candidates": [],
   "days": [
     {
       "closing": false,
@@ -280,9 +281,9 @@
     "openingDays": 54,
     "recordedCalendarWeeks": 12,
     "recordedDays": 54,
-    "selectedTasks": 5
+    "selectedTasks": 11
   },
-  "schemaVersion": 1,
+  "schemaVersion": 2,
   "sources": {
     "attendance": {
       "available": false,
@@ -296,9 +297,8 @@
       "periodStart": "2026-08-11"
     },
     "tasks": {
-      "file": "input/tasks.json",
-      "name": "선정 과제 목록",
-      "scope": "선정한 과제만 집계하며 전체 제출률이 아님"
+      "name": "T01~T11 과제 목록",
+      "scope": "과제 목록이며 제출·완료율을 뜻하지 않습니다."
     }
   },
   "storyEvidence": {
@@ -316,6 +316,85 @@
     "followingPeriod": "2026-10-21~2026-10-30",
     "recordedDays": 8
   },
+  "taskCatalog": [
+    {
+      "ability": "자기동기력",
+      "date": "2026-09",
+      "id": "T01",
+      "status": "unconfirmed",
+      "title": "소개 페이지"
+    },
+    {
+      "ability": "자기동기력",
+      "date": "2026-10",
+      "id": "T02",
+      "status": "unconfirmed",
+      "title": "LostStars"
+    },
+    {
+      "ability": "자기동기력",
+      "date": "2026-10",
+      "id": "T03",
+      "status": "completed",
+      "title": "Card Studio"
+    },
+    {
+      "ability": "자기동기력",
+      "date": "2026-10",
+      "id": "T04",
+      "status": "unconfirmed",
+      "title": "실제 날씨 정보"
+    },
+    {
+      "ability": "자기동기력",
+      "date": "2026-10",
+      "id": "T05",
+      "status": "completed",
+      "title": "AI Handoff"
+    },
+    {
+      "ability": "자기조절력",
+      "date": "2026-10",
+      "id": "T06",
+      "status": "completed",
+      "title": "Plan Do See"
+    },
+    {
+      "ability": "자기동기력",
+      "date": "2026-10",
+      "id": "T07",
+      "status": "unconfirmed",
+      "title": "로그인과 잠금"
+    },
+    {
+      "ability": "자기동기력",
+      "date": "2026-10",
+      "id": "T08",
+      "status": "unconfirmed",
+      "title": "Passkey Portfolio"
+    },
+    {
+      "ability": "대인관계력",
+      "date": "2026-10",
+      "id": "T09",
+      "status": "completed",
+      "title": "강점 서사"
+    },
+    {
+      "ability": "자기동기력",
+      "date": "2026-10",
+      "id": "T10",
+      "status": "completed",
+      "title": "논문"
+    },
+    {
+      "ability": "자기동기력",
+      "date": "2026-10",
+      "id": "T11",
+      "status": "unconfirmed",
+      "title": "소설"
+    }
+  ],
   "weeks": {
     "2026-W33": 4,
     "2026-W34": 4,

@@ -1,0 +1,82 @@
+{
+  "scope": "T01~T11 과제 목록. 제출 현황을 뜻하지 않으며 확인되지 않은 완료 상태는 unconfirmed로 남깁니다.",
+  "items": [
+    {
+      "id": "T01",
+      "title": "소개 페이지",
+      "date": "2026-09",
+      "ability": "자기동기력",
+      "status": "unconfirmed"
+    },
+    {
+      "id": "T02",
+      "title": "LostStars",
+      "date": "2026-10",
+      "ability": "자기동기력",
+      "status": "unconfirmed"
+    },
+    {
+      "id": "T03",
+      "title": "Card Studio",
+      "date": "2026-10",
+      "ability": "자기동기력",
+      "status": "completed"
+    },
+    {
+      "id": "T04",
+      "title": "실제 날씨 정보",
+      "date": "2026-10",
+      "ability": "자기동기력",
+      "status": "unconfirmed"
+    },
+    {
+      "id": "T05",
+      "title": "AI Handoff",
+      "date": "2026-10",
+      "ability": "자기동기력",
+      "status": "completed"
+    },
+    {
+      "id": "T06",
+      "title": "Plan Do See",
+      "date": "2026-10",
+      "ability": "자기조절력",
+      "status": "completed"
+    },
+    {
+      "id": "T07",
+      "title": "로그인과 잠금",
+      "date": "2026-10",
+      "ability": "자기동기력",
+      "status": "unconfirmed"
+    },
+    {
+      "id": "T08",
+      "title": "Passkey Portfolio",
+      "date": "2026-10",
+      "ability": "자기동기력",
+      "status": "unconfirmed"
+    },
+    {
+      "id": "T09",
+      "title": "강점 서사",
+      "date": "2026-10",
+      "ability": "대인관계력",
+      "status": "completed"
+    },
+    {
+      "id": "T10",
+      "title": "논문",
+      "date": "2026-10",
+      "ability": "자기동기력",
+      "status": "completed"
+    },
+    {
+      "id": "T11",
+      "title": "소설",
+      "date": "2026-10",
+      "ability": "자기동기력",
+      "status": "unconfirmed"
+    }
+  ]
+}
