@@ -27,7 +27,6 @@ document.querySelectorAll('a[href^="#"]').forEach((link) => {
   const status = document.getElementById('refresh-status');
   const list = document.getElementById('candidate-list');
   const apply = document.getElementById('apply-records');
-  const reset = document.getElementById('reset-records');
   const approved = document.getElementById('approved-records');
   let selected = new Set();
   function save() {
@@ -96,25 +95,6 @@ document.querySelectorAll('a[href^="#"]').forEach((link) => {
     paint();
     const persisted = save();
     status.textContent = current.approvedParagraphs.length+'개 문장을 사이트 이야기에 반영했습니다.'+(persisted ? ' 새로고침해도 이 브라우저에서 유지됩니다.' : ' 현재 화면에만 반영했습니다.');
-  });
-  reset.addEventListener('click', () => {
-    sequence += 1; current = initial; selected.clear();
-    ritual.value = ''; tasks.value = ''; attendance.value = '';
-    document.getElementById('record-file-preview').textContent = '';
-    document.getElementById('record-preview').hidden = true;
-    try { localStorage.removeItem(key); } catch (_) {}
-    paint(); status.textContent = '파일 반영 전의 공개 화면으로 돌아왔습니다.';
-  });
-  function download(blob, filename) {
-    const url = URL.createObjectURL(blob), a = document.createElement('a');
-    a.href = url; a.download = filename; document.body.append(a); a.click(); a.remove();
-    setTimeout(() => URL.revokeObjectURL(url), 1000);
-  }
-  document.getElementById('download-record-example').addEventListener('click', () => {
-    download(new Blob([JSON.stringify({records:[{date:'2026-10-30',ability:'자기동기력',text:'오늘 공부한 내용을 돌아보고 다음에 할 일을 정리했습니다.'}]},null,2)],{type:'application/json'}), 'record-example.json');
-  });
-  document.getElementById('download-text-example').addEventListener('click', () => {
-    download(new Blob(['2026-10-30\n공부가 잘 풀리지 않아 쉬고 다시 계획을 세웠습니다.\n\n2026-10-31\n마무리: 동료와 함께 공부하고 서로 도움을 나누었습니다.\n'], {type:'text/plain;charset=utf-8'}), 'record-example.txt');
   });
   try {
     const saved = JSON.parse(localStorage.getItem(key) || 'null');
