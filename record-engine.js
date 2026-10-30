@@ -136,7 +136,7 @@
     const m = data.metrics, s = data.sources.ritual;
     const catalog = (data.taskCatalog || Object.keys(taskTitles).map(id => ({id}))).map(t => ({id:t.id,title:taskTitles[t.id] || t.title || ''}));
     const allTasks = catalog.concat(data.followUpTasks || followUpTasks);
-    const taskSource = '<details class="metric-source task-catalog"><summary>출처: 13개 과제 목록</summary><div class="task-table-wrap"><table><caption>13개 과제 한눈에 보기</caption><thead><tr><th scope="col">코드</th><th scope="col">제목</th></tr></thead><tbody>'+allTasks.map(t => '<tr><th scope="row">'+esc(t.id)+'</th><td>'+esc(t.title)+'</td></tr>').join('')+'</tbody></table></div></details>';
+    const taskSource = '<details class="metric-source task-catalog"><summary>출처: 13개 과제 목록</summary><ul class="task-text-list">'+allTasks.map(t => '<li><strong>'+esc(t.id)+'</strong> · '+esc(t.title)+'</li>').join('')+'</ul></details>';
     const values = [[m.recordedDays, '일', '기록을 남긴 날', '시작 또는 마무리 기록이 있는 날짜를 하루에 한 번 셌습니다.', '리추얼·기록 파일'],
       [m.closingDays, '일', '하루를 돌아본 날', '마무리 기록에 내용이 있는 날짜만 셌습니다.', '리추얼·기록 파일'],
       [m.recordedCalendarWeeks, '주', '기록이 있는 달력주', '월요일~일요일 기준이며 공식 교육 주차와는 구분합니다.', '리추얼·기록 파일'],

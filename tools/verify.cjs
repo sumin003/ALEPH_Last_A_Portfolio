@@ -36,7 +36,7 @@ try{
   const txt=E.generate(E.parseRecordFile('2026-10-30\n다시 공부했습니다.\n2026-10-30\n회고: 동료와 함께 도움을 나누었습니다.','test.txt'));
   assert.equal(txt.metrics.recordedDays,1);assert.equal(txt.metrics.closingDays,1);checks.txtDatesAndDuplicates=true;checks.invalidDatesRejected=true;
   assert(E.approved({approvedParagraphs:[{ability:'자기동기력',text:'<script>alert(1)</script>'}]}).includes('&lt;script&gt;'));checks.htmlEscaping=true;
-  assert.equal(result.taskCatalog[0].title,'나를 소개하는 한 페이지');assert.equal(result.taskCatalog[10].title,'나에 대한 3만 자 장편소설 — 내 삶을 소재로, 진한 감동의 서사');assert.equal((baselineHtml.match(/<th scope="row">/g)||[]).length,13);checks.officialTaskList=true;
+  assert.equal(result.taskCatalog[0].title,'나를 소개하는 한 페이지');assert.equal(result.taskCatalog[10].title,'나에 대한 3만 자 장편소설 — 내 삶을 소재로, 진한 감동의 서사');assert.equal((baselineHtml.match(/<li><strong>(?:T\d{2}|마지막 과제 [AB])<\/strong>/g)||[]).length,13);checks.officialTaskList=true;
   assert(baselineHtml.includes('class="metric-source task-catalog"'));assert(baselineHtml.includes('<summary>출처: 13개 과제 목록</summary>'));assert(!baselineHtml.includes('class="source-details task-catalog"'));checks.taskSourceToggle=true;
   assert(!baselineHtml.includes('완료·제출률을 뜻하지 않습니다.'));checks.requestedDescriptionRemoved=true;
   const story=/<article class="story"[\s\S]*?<\/article>/.exec(baselineHtml)[0];assert(story.includes('2026년 10월 20일'));checks.datedStoryScene=true;
