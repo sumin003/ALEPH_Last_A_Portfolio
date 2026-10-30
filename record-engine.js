@@ -122,9 +122,9 @@
       schemaVersion: 2, asOf: days.at(-1).date,
       metrics: { recordedDays: days.length, openingDays: days.filter(d => d.opening).length,
         closingDays: days.filter(d => d.closing).length, recordedCalendarWeeks: new Set(days.map(d => week(d.date))).size,
-        selectedTasks: tasks.length, completedSelectedTasks: tasks.filter(t => t.status === 'completed').length },
+        selectedTasks: tasks.length + followUpTasks.length, completedSelectedTasks: tasks.filter(t => t.status === 'completed').length },
       sources: { ritual: { name: '리추얼·기록 파일', periodStart: days[0].date, periodEnd: days.at(-1).date },
-        tasks: { name: 'T01~T11 과제 목록', scope: 'T01~T11 학습 과제' } },
+        tasks: { name: '13개 과제 목록', scope: 'T01~T11과 마지막 과제 A·B' } },
       days: days.map(({date, opening, closing}) => ({date, opening, closing})),
       attendance, candidates: candidates.sort((a, b) => a.ability.localeCompare(b.ability, 'ko') || a.date.localeCompare(b.date)),
       approvedParagraphs: [], taskCatalog: tasks, followUpTasks
@@ -134,17 +134,18 @@
   const esc = x => String(x).replace(/[&<>"']/g, c => ({'&':'&amp;', '<':'&lt;', '>':'&gt;', '"':'&quot;', "'":'&#39;'}[c]));
   function numbers(data) {
     const m = data.metrics, s = data.sources.ritual;
+    const catalog = (data.taskCatalog || Object.keys(taskTitles).map(id => ({id}))).map(t => ({id:t.id,title:taskTitles[t.id] || t.title || ''}));
+    const allTasks = catalog.concat(data.followUpTasks || followUpTasks);
+    const taskSource = '<details class="metric-source task-catalog"><summary>출처: 13개 과제 목록</summary><div class="task-table-wrap"><table><caption>13개 과제 한눈에 보기</caption><thead><tr><th scope="col">코드</th><th scope="col">제목</th></tr></thead><tbody>'+allTasks.map(t => '<tr><th scope="row">'+esc(t.id)+'</th><td>'+esc(t.title)+'</td></tr>').join('')+'</tbody></table></div></details>';
     const values = [[m.recordedDays, '일', '기록을 남긴 날', '시작 또는 마무리 기록이 있는 날짜를 하루에 한 번 셌습니다.', '리추얼·기록 파일'],
       [m.closingDays, '일', '하루를 돌아본 날', '마무리 기록에 내용이 있는 날짜만 셌습니다.', '리추얼·기록 파일'],
       [m.recordedCalendarWeeks, '주', '기록이 있는 달력주', '월요일~일요일 기준이며 공식 교육 주차와는 구분합니다.', '리추얼·기록 파일'],
-      [m.selectedTasks, '개', 'T01~T11 과제 목록', 'T01부터 T11까지의 학습 과제입니다.', 'T01~T11 과제 목록']];
+      [allTasks.length, '개', '13개 과제 목록', 'T01~T11과 마지막 과제 A·B를 포함합니다.', '13개 과제 목록']];
     if (data.attendance) values.push([data.attendance.attendedDays, '일', '출석한 날', '대상 수업일 '+data.attendance.scheduledDays+'일', '내 출석 기록']);
-    const cards = values.map(([n,u,t,d,source]) => '<div class="metric"><p class="metric-value">'+esc(n)+'<span>'+u+'</span></p><h3>'+t+'</h3><p>'+d+'</p><p class="metric-source">출처: '+source+(source==='리추얼·기록 파일'?' · '+esc(s.periodStart)+'~'+esc(s.periodEnd):'')+'</p></div>').join('');
+    const cards = values.map(([n,u,t,d,source]) => '<div class="metric"><p class="metric-value">'+esc(n)+'<span>'+u+'</span></p><h3>'+t+'</h3><p>'+d+'</p>'+(source==='13개 과제 목록'?taskSource:'<p class="metric-source">출처: '+source+(source==='리추얼·기록 파일'?' · '+esc(s.periodStart)+'~'+esc(s.periodEnd):'')+'</p>')+'</div>').join('');
     const after = (data.days || []).filter(d => d.date > '2026-10-20' && d.date <= '2026-10-30').length;
     const story = after ? '<aside class="recovery"><h3>진도가 늦었던 날 이후에도, '+after+'일의 기록</h3><p>공부가 계획보다 늦었던 시기에도 충분히 쉬고 다시 해보자는 말을 남겼습니다. 그 뒤에도 기록을 이어가며 다음 날을 준비했습니다.</p><p class="metric-source">출처: 리추얼 기록 · 2026.10.21~10.30 기록 '+after+'일</p><a class="text-link" href="#slow-days">당시의 이야기 읽기</a></aside>' : '';
-    const catalog = (data.taskCatalog || Object.keys(taskTitles).map(id => ({id}))).map(t => ({id:t.id,title:taskTitles[t.id] || t.title || ''}));
-    const catalogHtml = '<details class="source-details task-catalog"><summary>13개 과제 한눈에 보기</summary><div class="task-table-wrap"><table><caption>학습 과제와 마지막 과제</caption><thead><tr><th scope="col">코드</th><th scope="col">제목</th></tr></thead><tbody>'+catalog.concat(data.followUpTasks || followUpTasks).map(t => '<tr><th scope="row">'+esc(t.id)+'</th><td>'+esc(t.title)+'</td></tr>').join('')+'</tbody></table></div></details>';
-    return '<div class="section-head"><h2 id="numbers-title">숫자로 보는 과정</h2><p>'+esc(data.asOf)+' 기준</p></div><p class="section-lead">뜻대로 되지 않은 날에도 기록을 이어갔습니다.</p><div class="metrics">'+cards+'</div>'+catalogHtml+story+'<p><a class="text-link record-entry" href="#record-refresh">리추얼·기록 파일로 갱신하기</a></p><details class="source-details"><summary>숫자의 출처와 계산 기준</summary><div><p>기록 날짜를 중복 제거했습니다. 기록 '+esc(m.recordedDays)+'일, 시작 '+esc(m.openingDays)+'일, 마무리 '+esc(m.closingDays)+'일입니다. 주 수는 월~일 기준입니다. 기록 수는 출석일·능력 점수와 다르며, 과제 목록은 T01~T11을 대상으로 합니다.</p><p>출처: 리추얼·기록 JSON·TXT 파일 / T01~T11 과제 목록 / 실제 출석 파일이 있을 때에만 출석 수치 표시</p><a class="text-link" href="#record-refresh">새 기록 반영하기</a></div></details>';
+    return '<div class="section-head"><h2 id="numbers-title">숫자로 보는 과정</h2><p>'+esc(data.asOf)+' 기준</p></div><p class="section-lead">뜻대로 되지 않은 날에도 기록을 이어갔습니다.</p><div class="metrics">'+cards+'</div>'+story+'<p><a class="text-link record-entry" href="#record-refresh">리추얼·기록 파일로 갱신하기</a></p><details class="source-details"><summary>숫자의 출처와 계산 기준</summary><div><p>기록 날짜를 중복 제거했습니다. 기록 '+esc(m.recordedDays)+'일, 시작 '+esc(m.openingDays)+'일, 마무리 '+esc(m.closingDays)+'일입니다. 주 수는 월~일 기준입니다. 기록 수는 출석일·능력 점수와 다르며, 과제 목록은 T01~T11과 마지막 과제 A·B를 포함합니다.</p><p>출처: 리추얼·기록 JSON·TXT 파일 / 13개 과제 목록 / 실제 출석 파일이 있을 때에만 출석 수치 표시</p><a class="text-link" href="#record-refresh">새 기록 반영하기</a></div></details>';
   }
   function approved(data) {
     return (data.approvedParagraphs || []).map(x => '<section class="approved-entry"><h3>'+esc(x.ability)+'</h3><p>'+esc(x.text)+'</p></section>').join('');

@@ -6,7 +6,7 @@
     "openingDays": 54,
     "closingDays": 47,
     "recordedCalendarWeeks": 12,
-    "selectedTasks": 11,
+    "selectedTasks": 13,
     "completedSelectedTasks": 5
   },
   "sources": {
@@ -16,8 +16,8 @@
       "periodEnd": "2026-10-30"
     },
     "tasks": {
-      "name": "T01~T11 과제 목록",
-      "scope": "T01~T11 학습 과제"
+      "name": "13개 과제 목록",
+      "scope": "T01~T11과 마지막 과제 A·B"
     }
   },
   "days": [

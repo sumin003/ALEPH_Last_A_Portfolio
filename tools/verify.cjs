@@ -18,7 +18,7 @@ try{
   const second={output:manifest(path.join(fresh,'output')),site:manifest(path.join(fresh,'site'))};
   assert.deepEqual(first,second);checks.freshFolderBuild=true;checks.sameInputSameBytes=true;
   const result=JSON.parse(fs.readFileSync(path.join(fresh,'output/site-data.json')));
-  assert.equal(result.metrics.recordedDays,54);assert.equal(result.metrics.closingDays,47);assert.equal(result.metrics.selectedTasks,11);checks.actualRecordTotals=true;
+  assert.equal(result.metrics.recordedDays,54);assert.equal(result.metrics.closingDays,47);assert.equal(result.metrics.selectedTasks,13);checks.actualRecordTotals=true;
   const baselineHtml=fs.readFileSync(path.join(fresh,'site/index.html'),'utf8');
   assert(baselineHtml.includes('id="approved-records" hidden'));assert(!baselineHtml.includes('task-file'));checks.unapprovedParagraphsHidden=true;checks.noTaskUpload=true;
   const candidates=result.candidates;assert(candidates.length>0);
@@ -37,6 +37,7 @@ try{
   assert.equal(txt.metrics.recordedDays,1);assert.equal(txt.metrics.closingDays,1);checks.txtDatesAndDuplicates=true;checks.invalidDatesRejected=true;
   assert(E.approved({approvedParagraphs:[{ability:'자기동기력',text:'<script>alert(1)</script>'}]}).includes('&lt;script&gt;'));checks.htmlEscaping=true;
   assert.equal(result.taskCatalog[0].title,'나를 소개하는 한 페이지');assert.equal(result.taskCatalog[10].title,'나에 대한 3만 자 장편소설 — 내 삶을 소재로, 진한 감동의 서사');assert.equal((baselineHtml.match(/<th scope="row">/g)||[]).length,13);checks.officialTaskList=true;
+  assert(baselineHtml.includes('class="metric-source task-catalog"'));assert(baselineHtml.includes('<summary>출처: 13개 과제 목록</summary>'));assert(!baselineHtml.includes('class="source-details task-catalog"'));checks.taskSourceToggle=true;
   assert(!baselineHtml.includes('완료·제출률을 뜻하지 않습니다.'));checks.requestedDescriptionRemoved=true;
   const story=/<article class="story"[\s\S]*?<\/article>/.exec(baselineHtml)[0];assert(story.includes('2026년 10월 20일'));checks.datedStoryScene=true;
   const report={checks,first,second,note:'승인 동작 검사는 임시 폴더에서만 실행했습니다. 이 결과는 사용자 승인이나 동료 피드백을 뜻하지 않습니다.'};
