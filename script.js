@@ -62,18 +62,24 @@ document.querySelectorAll('a[href^="#"]').forEach((link) => {
     exportButton.disabled = false;
     document.getElementById('record-summary').textContent = '기록 '+current.metrics.recordedDays+'일 · 마무리 '+current.metrics.closingDays+'일 · 문단 후보 '+choices.length+'개 · 승인 '+(current.approvedParagraphs || []).length+'개';
   }
-  async function parse(file) {
+  async function parse(file, isRecord = false) {
     if (!file) return null;
     if (file.size > 5 * 1024 * 1024) throw Error('파일은 5MB 이하로 선택해 주세요.');
-    try { return JSON.parse((await file.text()).replace(/^\uFEFF/, '')); }
+    const text = await file.text();
+    if (isRecord) {
+      document.getElementById('record-file-preview').textContent = text.slice(0, 12000);
+      document.getElementById('record-preview').hidden = false;
+      return E.parseRecordFile(text, file.name, document.getElementById('text-record-date').value);
+    }
+    try { return JSON.parse(text.replace(/^\uFEFF/, '')); }
     catch (_) { throw Error('JSON 파일을 읽지 못했습니다. 내보낸 기록 파일인지 확인해 주세요.'); }
   }
   async function ingest() {
     const version = ++sequence;
-    if (!ritual.files[0]) { status.textContent = '먼저 리추얼·기록 JSON 파일을 선택해 주세요.'; return; }
+    if (!ritual.files[0]) { status.textContent = '먼저 리추얼·기록 JSON 또는 TXT 파일을 선택해 주세요.'; return; }
     status.textContent = '기록을 읽고 숫자와 문단 후보를 만들고 있습니다.';
     try {
-      const [r, t, a] = await Promise.all([parse(ritual.files[0]), parse(tasks.files[0]), parse(attendance.files[0])]);
+      const [r, t, a] = await Promise.all([parse(ritual.files[0], true), parse(tasks.files[0]), parse(attendance.files[0])]);
       if (version !== sequence) return;
       const next = E.generate(r, t || {items: initial.taskCatalog}, a);
       next.approvedParagraphs = (current.approvedParagraphs || []).filter(old => next.candidates.some(c => c.id === old.id && c.text === old.text && c.date === old.date && c.ability === old.ability));
@@ -87,6 +93,7 @@ document.querySelectorAll('a[href^="#"]').forEach((link) => {
     }
   }
   [ritual, tasks, attendance].forEach(input => input.addEventListener('change', ingest));
+  document.getElementById('text-record-date').addEventListener('change', ingest);
   apply.addEventListener('click', () => {
     current.approvedParagraphs = (current.candidates || []).filter(c => selected.has(c.id));
     paint();
@@ -96,6 +103,9 @@ document.querySelectorAll('a[href^="#"]').forEach((link) => {
   reset.addEventListener('click', () => {
     sequence += 1; current = initial; selected.clear();
     ritual.value = ''; tasks.value = ''; attendance.value = '';
+    document.getElementById('text-record-date').value = '';
+    document.getElementById('record-file-preview').textContent = '';
+    document.getElementById('record-preview').hidden = true;
     try { localStorage.removeItem(key); } catch (_) {}
     paint(); status.textContent = '파일 반영 전의 공개 화면으로 돌아왔습니다.';
   });
@@ -106,6 +116,9 @@ document.querySelectorAll('a[href^="#"]').forEach((link) => {
   }
   document.getElementById('download-record-example').addEventListener('click', () => {
     download(new Blob([JSON.stringify({records:[{date:'2026-10-30',ability:'자기동기력',text:'오늘 공부한 내용을 돌아보고 다음에 할 일을 정리했습니다.'}]},null,2)],{type:'application/json'}), 'record-example.json');
+  });
+  document.getElementById('download-text-example').addEventListener('click', () => {
+    download(new Blob(['2026-10-30\n공부가 잘 풀리지 않아 쉬고 다시 계획을 세웠습니다.\n\n2026-10-31\n마무리: 동료와 함께 공부하고 서로 도움을 나누었습니다.\n'], {type:'text/plain;charset=utf-8'}), 'record-example.txt');
   });
   // A small deterministic uncompressed ZIP writer; no external service or package.
   function zip(files) {
@@ -147,6 +160,9 @@ document.querySelectorAll('a[href^="#"]').forEach((link) => {
       clone.querySelector('#record-summary').textContent = '';
       clone.querySelector('#apply-records').disabled = true;
       clone.querySelector('#record-refresh').open = false;
+      clone.querySelector('#record-file-preview').textContent = '';
+      clone.querySelector('#record-preview').hidden = true;
+      clone.querySelector('#text-record-date').value = '';
       const files={'index.html':'<!doctype html>\n'+clone.outerHTML, 'data/site-data.json':JSON.stringify(state,null,2)+'\n', 'data/tasks.json':JSON.stringify({items:state.taskCatalog},null,2)+'\n'};
       for(const path of ['style.css','script.js','record-engine.js']) {
         const response = await fetch(path); if(!response.ok) throw Error('사이트 파일을 읽지 못했습니다: '+path);

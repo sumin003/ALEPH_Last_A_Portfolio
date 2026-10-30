@@ -32,9 +32,44 @@
       .replace(/(?:sk-[A-Za-z0-9_-]{20,}|gh[pousr]_[A-Za-z0-9]{20,}|eyJ[A-Za-z0-9_-]+\.[A-Za-z0-9_-]+\.[A-Za-z0-9_-]+)/g, '[비밀값 생략]')
       .slice(0, 600).trim();
   }
+  function parseRecordFile(input, filename, fallbackDate) {
+    const text = String(input).replace(/^\uFEFF/, '').replace(/\r\n?/g, '\n').trim();
+    if (!text) throw Error('빈 파일입니다. 기록 내용을 넣어 주세요.');
+    if (/\.json$/i.test(filename) || /^[{[]/.test(text)) {
+      try { return JSON.parse(text); }
+      catch (_) { throw Error('JSON 형식을 읽지 못했습니다. 괄호와 쉼표를 확인해 주세요.'); }
+    }
+    if (!/\.txt$/i.test(filename)) throw Error('JSON 또는 TXT 파일을 선택해 주세요.');
+    const records = []; let current = null; const undated = [];
+    for (const line of text.split('\n')) {
+      // 날짜는 줄 시작(마크다운 제목 허용)에 있어야 합니다. 본문의 날짜 언급은 구분하지 않습니다.
+      const match = line.match(/^\s*(?:#{1,6}\s*)?(\d{4})(?:[-./]\s*|년\s*)(\d{1,2})(?:[-./]\s*|월\s*)(\d{1,2})(?:일)?(?=$|[\s·:|\-])/);
+      if (match) {
+        if (current) records.push(current);
+        const when = date(match[1]+'-'+match[2].padStart(2,'0')+'-'+match[3].padStart(2,'0'));
+        current = {date: when, lines: []};
+        const rest = line.slice(match[0].length).replace(/^[\s·:|\-]+/, '').trim();
+        if (rest) current.lines.push(rest);
+      } else if (line.trim()) {
+        (current ? current.lines : undated).push(line.trim());
+      }
+    }
+    if (current) records.push(current);
+    if (undated.length) {
+      if (records.length) throw Error('첫 날짜 앞에 날짜 없는 내용이 있습니다. 각 기록 위에 날짜를 적어 주세요.');
+      if (!fallbackDate) throw Error('날짜 없는 TXT입니다. 아래 ‘날짜 없는 TXT의 기록일’을 지정해 주세요.');
+      records.push({date: date(fallbackDate), lines: undated});
+    }
+    const rows = records.filter(r => r.lines.length).map(r => {
+      const content = r.lines.join('\n');
+      return {date:r.date, text:content, close: /(?:^|\n)\s*(?:#{1,6}\s*)?(?:마무리|하루 마무리|회고|close)(?:\s|[:：]|$)/i.test(content)};
+    });
+    if (!rows.length) throw Error('날짜 아래에 기록 내용이 필요합니다.');
+    return {records: rows};
+  }
   function generate(raw, taskInput, attendanceInput) {
     const entries = Array.isArray(raw) ? raw : (raw?.days || raw?.records);
-    if (!Array.isArray(entries) || !entries.length) throw Error('days 또는 records 배열이 있는 JSON 기록 파일을 선택해 주세요.');
+    if (!Array.isArray(entries) || !entries.length) throw Error('days 또는 records 배열이 있는 JSON·TXT 기록 파일을 선택해 주세요.');
     const byDate = new Map();
     for (const entry of entries) {
       const when = date(entry.date);
@@ -105,12 +140,12 @@
     const cards = values.map(([n,u,t,d,source]) => '<div class="metric"><p class="metric-value">'+esc(n)+'<span>'+u+'</span></p><h3>'+t+'</h3><p>'+d+'</p><p class="metric-source">출처: '+source+(source==='리추얼·기록 파일'?' · '+esc(s.periodStart)+'~'+esc(s.periodEnd):'')+'</p></div>').join('');
     const after = (data.days || []).filter(d => d.date > '2026-10-20' && d.date <= '2026-10-30').length;
     const story = after ? '<aside class="recovery"><h3>진도가 늦었던 날 이후에도, '+after+'일의 기록</h3><p>공부가 계획보다 늦었던 시기에도 충분히 쉬고 다시 해보자는 말을 남겼습니다. 그 뒤에도 기록을 이어가며 다음 날을 준비했습니다.</p><p class="metric-source">출처: 리추얼 기록 · 2026.10.21~10.30 기록 '+after+'일</p><a class="text-link" href="#slow-days">당시의 이야기 읽기</a></aside>' : '';
-    return '<div class="section-head"><h2 id="numbers-title">숫자로 보는 과정</h2><p>'+esc(data.asOf)+' 기준</p></div><p class="section-lead">뜻대로 되지 않은 날에도 기록을 이어갔습니다.</p><div class="metrics">'+cards+'</div>'+story+'<p><a class="text-link record-entry" href="#record-refresh">리추얼·기록 파일로 갱신하기</a></p><details class="source-details"><summary>숫자의 출처와 계산 기준</summary><div><p>기록 날짜를 중복 제거했습니다. 기록 '+esc(m.recordedDays)+'일, 시작 '+esc(m.openingDays)+'일, 마무리 '+esc(m.closingDays)+'일입니다. 주 수는 월~일 기준입니다. 기록 수는 출석일·능력 점수와 다르며, 과제 목록은 T01~T11을 대상으로 합니다.</p><p>출처: 리추얼·기록 JSON 파일 / T01~T11 과제 목록 / 실제 출석 파일이 있을 때에만 출석 수치 표시</p><a class="text-link" href="#record-refresh">새 기록 반영하기</a></div></details>';
+    return '<div class="section-head"><h2 id="numbers-title">숫자로 보는 과정</h2><p>'+esc(data.asOf)+' 기준</p></div><p class="section-lead">뜻대로 되지 않은 날에도 기록을 이어갔습니다.</p><div class="metrics">'+cards+'</div>'+story+'<p><a class="text-link record-entry" href="#record-refresh">리추얼·기록 파일로 갱신하기</a></p><details class="source-details"><summary>숫자의 출처와 계산 기준</summary><div><p>기록 날짜를 중복 제거했습니다. 기록 '+esc(m.recordedDays)+'일, 시작 '+esc(m.openingDays)+'일, 마무리 '+esc(m.closingDays)+'일입니다. 주 수는 월~일 기준입니다. 기록 수는 출석일·능력 점수와 다르며, 과제 목록은 T01~T11을 대상으로 합니다.</p><p>출처: 리추얼·기록 JSON·TXT 파일 / T01~T11 과제 목록 / 실제 출석 파일이 있을 때에만 출석 수치 표시</p><a class="text-link" href="#record-refresh">새 기록 반영하기</a></div></details>';
   }
   function approved(data) {
     return (data.approvedParagraphs || []).map(x => '<section class="approved-entry"><h3>'+esc(x.ability)+'</h3><p>'+esc(x.text)+'</p></section>').join('');
   }
-  const api = { generate, numbers, approved, clean, esc, abilities };
+  const api = { parseRecordFile, generate, numbers, approved, clean, esc, abilities };
   if (typeof module === 'object' && module.exports) module.exports = api;
   else root.RecordEngine = api;
 })(typeof globalThis !== 'undefined' ? globalThis : this);
