@@ -8,3 +8,4 @@ document.querySelectorAll('a[href^="#"]').forEach((link) => {
     target.addEventListener('blur', () => target.removeAttribute('tabindex'), { once: true });
   });
 });
+
