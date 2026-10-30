@@ -1,0 +1,22 @@
+{
+  "asOf": "2026-10-30",
+  "metrics": {
+    "recordedDays": 54,
+    "openingDays": 54,
+    "closingDays": 47,
+    "recordedCalendarWeeks": 12,
+    "selectedTasks": 11,
+    "completedSelectedTasks": 5
+  },
+  "sources": {
+    "ritual": {
+      "name": "리추얼·기록 파일",
+      "periodStart": "2026-08-11",
+      "periodEnd": "2026-10-30"
+    },
+    "tasks": {
+      "name": "T01~T11 과제 목록",
+      "scope": "과제 목록이며 전체 제출률이 아닙니다."
+    }
+  }
+}

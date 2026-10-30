@@ -1,0 +1,444 @@
+{
+  "days": [
+    {
+      "close": false,
+      "date": "2026-08-11",
+      "open": true,
+      "signals": [
+        "자기동기력"
+      ]
+    },
+    {
+      "close": true,
+      "date": "2026-08-12",
+      "open": true,
+      "signals": [
+        "자기조절력",
+        "대인관계력"
+      ]
+    },
+    {
+      "close": true,
+      "date": "2026-08-13",
+      "open": true,
+      "signals": [
+        "자기조절력",
+        "대인관계력"
+      ]
+    },
+    {
+      "close": true,
+      "date": "2026-08-14",
+      "open": true,
+      "signals": [
+        "대인관계력",
+        "자기동기력"
+      ]
+    },
+    {
+      "close": true,
+      "date": "2026-08-18",
+      "open": true,
+      "signals": [
+        "대인관계력",
+        "자기동기력"
+      ]
+    },
+    {
+      "close": true,
+      "date": "2026-08-19",
+      "open": true,
+      "signals": [
+        "자기조절력",
+        "자기동기력"
+      ]
+    },
+    {
+      "close": true,
+      "date": "2026-08-20",
+      "open": true,
+      "signals": [
+        "자기동기력"
+      ]
+    },
+    {
+      "close": true,
+      "date": "2026-08-21",
+      "open": true,
+      "signals": [
+        "대인관계력",
+        "자기동기력"
+      ]
+    },
+    {
+      "close": true,
+      "date": "2026-08-24",
+      "open": true,
+      "signals": [
+        "자기동기력"
+      ]
+    },
+    {
+      "close": true,
+      "date": "2026-08-25",
+      "open": true,
+      "signals": [
+        "자기동기력"
+      ]
+    },
+    {
+      "close": false,
+      "date": "2026-08-26",
+      "open": true,
+      "signals": [
+        "자기동기력"
+      ]
+    },
+    {
+      "close": true,
+      "date": "2026-08-27",
+      "open": true,
+      "signals": [
+        "대인관계력",
+        "자기동기력"
+      ]
+    },
+    {
+      "close": true,
+      "date": "2026-08-28",
+      "open": true,
+      "signals": [
+        "대인관계력",
+        "자기동기력"
+      ]
+    },
+    {
+      "close": false,
+      "date": "2026-08-31",
+      "open": true,
+      "signals": []
+    },
+    {
+      "close": true,
+      "date": "2026-09-01",
+      "open": true,
+      "signals": [
+        "대인관계력",
+        "자기동기력"
+      ]
+    },
+    {
+      "close": true,
+      "date": "2026-09-02",
+      "open": true,
+      "signals": [
+        "자기동기력"
+      ]
+    },
+    {
+      "close": false,
+      "date": "2026-09-03",
+      "open": true,
+      "signals": []
+    },
+    {
+      "close": true,
+      "date": "2026-09-04",
+      "open": true,
+      "signals": [
+        "자기동기력"
+      ]
+    },
+    {
+      "close": true,
+      "date": "2026-09-07",
+      "open": true,
+      "signals": [
+        "자기동기력"
+      ]
+    },
+    {
+      "close": true,
+      "date": "2026-09-08",
+      "open": true,
+      "signals": [
+        "대인관계력",
+        "자기동기력"
+      ]
+    },
+    {
+      "close": true,
+      "date": "2026-09-09",
+      "open": true,
+      "signals": [
+        "대인관계력",
+        "자기동기력"
+      ]
+    },
+    {
+      "close": true,
+      "date": "2026-09-10",
+      "open": true,
+      "signals": [
+        "자기동기력"
+      ]
+    },
+    {
+      "close": true,
+      "date": "2026-09-11",
+      "open": true,
+      "signals": [
+        "자기동기력"
+      ]
+    },
+    {
+      "close": true,
+      "date": "2026-09-14",
+      "open": true,
+      "signals": [
+        "자기동기력"
+      ]
+    },
+    {
+      "close": true,
+      "date": "2026-09-15",
+      "open": true,
+      "signals": [
+        "자기동기력"
+      ]
+    },
+    {
+      "close": true,
+      "date": "2026-09-16",
+      "open": true,
+      "signals": [
+        "대인관계력",
+        "자기동기력"
+      ]
+    },
+    {
+      "close": true,
+      "date": "2026-09-17",
+      "open": true,
+      "signals": [
+        "자기조절력",
+        "자기동기력"
+      ]
+    },
+    {
+      "close": true,
+      "date": "2026-09-18",
+      "open": true,
+      "signals": [
+        "대인관계력"
+      ]
+    },
+    {
+      "close": false,
+      "date": "2026-09-21",
+      "open": true,
+      "signals": []
+    },
+    {
+      "close": true,
+      "date": "2026-09-22",
+      "open": true,
+      "signals": []
+    },
+    {
+      "close": false,
+      "date": "2026-09-23",
+      "open": true,
+      "signals": []
+    },
+    {
+      "close": true,
+      "date": "2026-09-28",
+      "open": true,
+      "signals": [
+        "대인관계력"
+      ]
+    },
+    {
+      "close": true,
+      "date": "2026-09-29",
+      "open": true,
+      "signals": [
+        "대인관계력"
+      ]
+    },
+    {
+      "close": true,
+      "date": "2026-09-30",
+      "open": true,
+      "signals": [
+        "대인관계력",
+        "자기동기력"
+      ]
+    },
+    {
+      "close": true,
+      "date": "2026-10-01",
+      "open": true,
+      "signals": [
+        "자기동기력"
+      ]
+    },
+    {
+      "close": true,
+      "date": "2026-10-02",
+      "open": true,
+      "signals": []
+    },
+    {
+      "close": true,
+      "date": "2026-10-06",
+      "open": true,
+      "signals": [
+        "자기동기력"
+      ]
+    },
+    {
+      "close": true,
+      "date": "2026-10-07",
+      "open": true,
+      "signals": [
+        "대인관계력"
+      ]
+    },
+    {
+      "close": true,
+      "date": "2026-10-08",
+      "open": true,
+      "signals": [
+        "자기동기력"
+      ]
+    },
+    {
+      "close": true,
+      "date": "2026-10-12",
+      "open": true,
+      "signals": [
+        "자기동기력"
+      ]
+    },
+    {
+      "close": true,
+      "date": "2026-10-13",
+      "open": true,
+      "signals": [
+        "자기동기력"
+      ]
+    },
+    {
+      "close": true,
+      "date": "2026-10-14",
+      "open": true,
+      "signals": []
+    },
+    {
+      "close": true,
+      "date": "2026-10-15",
+      "open": true,
+      "signals": [
+        "대인관계력",
+        "자기동기력"
+      ]
+    },
+    {
+      "close": true,
+      "date": "2026-10-16",
+      "open": true,
+      "signals": [
+        "대인관계력",
+        "자기동기력"
+      ]
+    },
+    {
+      "close": true,
+      "date": "2026-10-19",
+      "open": true,
+      "signals": [
+        "자기동기력"
+      ]
+    },
+    {
+      "close": true,
+      "date": "2026-10-20",
+      "open": true,
+      "signals": [
+        "자기동기력"
+      ]
+    },
+    {
+      "close": true,
+      "date": "2026-10-21",
+      "open": true,
+      "signals": [
+        "자기조절력",
+        "대인관계력",
+        "자기동기력"
+      ]
+    },
+    {
+      "close": true,
+      "date": "2026-10-22",
+      "open": true,
+      "signals": [
+        "대인관계력",
+        "자기동기력"
+      ]
+    },
+    {
+      "close": true,
+      "date": "2026-10-23",
+      "open": true,
+      "signals": [
+        "대인관계력",
+        "자기동기력"
+      ]
+    },
+    {
+      "close": true,
+      "date": "2026-10-26",
+      "open": true,
+      "signals": [
+        "자기동기력"
+      ]
+    },
+    {
+      "close": true,
+      "date": "2026-10-27",
+      "open": true,
+      "signals": [
+        "자기동기력"
+      ]
+    },
+    {
+      "close": true,
+      "date": "2026-10-28",
+      "open": true,
+      "signals": [
+        "대인관계력",
+        "자기동기력"
+      ]
+    },
+    {
+      "close": true,
+      "date": "2026-10-29",
+      "open": true,
+      "signals": [
+        "대인관계력",
+        "자기동기력"
+      ]
+    },
+    {
+      "close": false,
+      "date": "2026-10-30",
+      "open": true,
+      "signals": []
+    }
+  ],
+  "description": "원문의 개인정보를 제외하고 날짜, 기록 유무, 낱말 규칙에 따른 능력 분류만 남겼습니다.",
+  "source_file": "ritual-history-2026-10-30(1).json"
+}

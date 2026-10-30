@@ -1,0 +1,61 @@
+{
+  "checks": {
+    "freshFolderBuild": true,
+    "sameInputSameBytes": true,
+    "actualRecordTotals": true,
+    "unapprovedParagraphsHidden": true,
+    "noTaskUpload": true,
+    "explicitApprovalOnly": true,
+    "changedApprovalRejected": true,
+    "approvalRevocation": true,
+    "txtDatesAndDuplicates": true,
+    "invalidDatesRejected": true,
+    "htmlEscaping": true,
+    "datedStoryScene": true
+  },
+  "first": {
+    "output": {
+      "approval-status.json": "e18a54065a6d8d0cd79ec54db40232d89376a0fc9eaedf4f269c23364b7645f4",
+      "candidates.json": "865228764167ba12966c0122e130f76b9adf5f753b7ace2d772cd350da724be0",
+      "site-data.json": "96b9c399b4766360acdf34546a7f33bd9508674e3c2cd0db445127b88062e826",
+      "summary.json": "a7c70765dea5e19d12ac1804970731ffc77665b290225d6a18e5f17f5099df2f"
+    },
+    "site": {
+      "data/site-data.json": "d49fbb1e91b0a3adc5ff42116a6f6aaf3fffced2832b257db3485b6771aab0db",
+      "data/tasks.json": "d59bb2789fd92d315f79eb42478f140a741968f815a5976756f2f4f7656d5627",
+      "documents/experience.docx": "ece215c3560ccd43d1f29fbb6fb9898954f8c7b93d63e49081591dffab26d8ce",
+      "documents/introduction.docx": "7e7a5a3fb6eb5d08809aeec98e7e13c891e94aeb683e57a88a097a380e476c71",
+      "documents/research-paper.docx": "a9ede7c390511c936eb34aba6bb641235cfe0de3c152641c478e0fc59293b9d5",
+      "documents/resume.docx": "3eea150ea05042795710ee6dcb905e4010c6fdbc12397548e72c569352019d2f",
+      "images/bus-flow.png": "27787667f1d54fd1671701b1a4f7eddc1939daa6fc75c4711eb94b9125c4dc32",
+      "images/tabletalk-flow.png": "40b59a8f4dd60886f86fa5eff06f374d673e361301d671574d7a3aa00f2d5954",
+      "index.html": "71262f909219f3e9931dda5860dc5099dcd842ca420255eb8753a361fb430ce4",
+      "record-engine.js": "d21a4851178aee800a8e582252452916318b6f5685b498eb5ebe35a910a49887",
+      "script.js": "c0ad3f8de080d9043d4a7c3e1d93544214add5ad78932746d70032384331f52a",
+      "style.css": "1f235214ddee2b4069284dd2d82e17741b0ac86df011541f640ca52f209d4ca3"
+    }
+  },
+  "second": {
+    "output": {
+      "approval-status.json": "e18a54065a6d8d0cd79ec54db40232d89376a0fc9eaedf4f269c23364b7645f4",
+      "candidates.json": "865228764167ba12966c0122e130f76b9adf5f753b7ace2d772cd350da724be0",
+      "site-data.json": "96b9c399b4766360acdf34546a7f33bd9508674e3c2cd0db445127b88062e826",
+      "summary.json": "a7c70765dea5e19d12ac1804970731ffc77665b290225d6a18e5f17f5099df2f"
+    },
+    "site": {
+      "data/site-data.json": "d49fbb1e91b0a3adc5ff42116a6f6aaf3fffced2832b257db3485b6771aab0db",
+      "data/tasks.json": "d59bb2789fd92d315f79eb42478f140a741968f815a5976756f2f4f7656d5627",
+      "documents/experience.docx": "ece215c3560ccd43d1f29fbb6fb9898954f8c7b93d63e49081591dffab26d8ce",
+      "documents/introduction.docx": "7e7a5a3fb6eb5d08809aeec98e7e13c891e94aeb683e57a88a097a380e476c71",
+      "documents/research-paper.docx": "a9ede7c390511c936eb34aba6bb641235cfe0de3c152641c478e0fc59293b9d5",
+      "documents/resume.docx": "3eea150ea05042795710ee6dcb905e4010c6fdbc12397548e72c569352019d2f",
+      "images/bus-flow.png": "27787667f1d54fd1671701b1a4f7eddc1939daa6fc75c4711eb94b9125c4dc32",
+      "images/tabletalk-flow.png": "40b59a8f4dd60886f86fa5eff06f374d673e361301d671574d7a3aa00f2d5954",
+      "index.html": "71262f909219f3e9931dda5860dc5099dcd842ca420255eb8753a361fb430ce4",
+      "record-engine.js": "d21a4851178aee800a8e582252452916318b6f5685b498eb5ebe35a910a49887",
+      "script.js": "c0ad3f8de080d9043d4a7c3e1d93544214add5ad78932746d70032384331f52a",
+      "style.css": "1f235214ddee2b4069284dd2d82e17741b0ac86df011541f640ca52f209d4ca3"
+    }
+  },
+  "note": "승인 동작 검사는 임시 폴더에서만 실행했습니다. 이 결과는 사용자 승인이나 동료 피드백을 뜻하지 않습니다."
+}

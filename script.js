@@ -22,7 +22,6 @@ document.querySelectorAll('a[href^="#"]').forEach((link) => {
   let current = initial;
   let sequence = 0;
   const ritual = document.getElementById('ritual-file');
-  const tasks = document.getElementById('task-file');
   const attendance = document.getElementById('attendance-file');
   const status = document.getElementById('refresh-status');
   const list = document.getElementById('candidate-list');
@@ -76,9 +75,9 @@ document.querySelectorAll('a[href^="#"]').forEach((link) => {
     if (!ritual.files[0]) { status.textContent = '먼저 리추얼·기록 JSON 또는 TXT 파일을 선택해 주세요.'; return; }
     status.textContent = '기록을 읽고 숫자와 문단 후보를 만들고 있습니다.';
     try {
-      const [r, t, a] = await Promise.all([parse(ritual.files[0], true), parse(tasks.files[0]), parse(attendance.files[0])]);
+      const [r, a] = await Promise.all([parse(ritual.files[0], true), parse(attendance.files[0])]);
       if (version !== sequence) return;
-      const next = E.generate(r, t || {items: initial.taskCatalog}, a);
+      const next = E.generate(r, {items: initial.taskCatalog}, a);
       next.approvedParagraphs = (current.approvedParagraphs || []).filter(old => next.candidates.some(c => c.id === old.id && c.text === old.text && c.date === old.date && c.ability === old.ability));
       current = next;
       selected = new Set(current.approvedParagraphs.map(c => c.id));
@@ -89,7 +88,7 @@ document.querySelectorAll('a[href^="#"]').forEach((link) => {
       if (version === sequence) status.textContent = error.message+' 기존 화면은 유지했습니다.';
     }
   }
-  [ritual, tasks, attendance].forEach(input => input.addEventListener('change', ingest));
+  [ritual, attendance].forEach(input => input.addEventListener('change', ingest));
   apply.addEventListener('click', () => {
     current.approvedParagraphs = (current.candidates || []).filter(c => selected.has(c.id));
     paint();

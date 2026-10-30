@@ -1,412 +1,344 @@
 {
-  "approvedParagraphs": [],
-  "asOf": "2026-10-30",
-  "attendance": null,
-  "candidates": [],
-  "days": [
-    {
-      "closing": false,
-      "date": "2026-08-11",
-      "opening": true
-    },
-    {
-      "closing": true,
-      "date": "2026-08-12",
-      "opening": true
-    },
-    {
-      "closing": true,
-      "date": "2026-08-13",
-      "opening": true
-    },
-    {
-      "closing": true,
-      "date": "2026-08-14",
-      "opening": true
-    },
-    {
-      "closing": true,
-      "date": "2026-08-18",
-      "opening": true
-    },
-    {
-      "closing": true,
-      "date": "2026-08-19",
-      "opening": true
-    },
-    {
-      "closing": true,
-      "date": "2026-08-20",
-      "opening": true
-    },
-    {
-      "closing": true,
-      "date": "2026-08-21",
-      "opening": true
-    },
-    {
-      "closing": true,
-      "date": "2026-08-24",
-      "opening": true
-    },
-    {
-      "closing": true,
-      "date": "2026-08-25",
-      "opening": true
-    },
-    {
-      "closing": false,
-      "date": "2026-08-26",
-      "opening": true
-    },
-    {
-      "closing": true,
-      "date": "2026-08-27",
-      "opening": true
-    },
-    {
-      "closing": true,
-      "date": "2026-08-28",
-      "opening": true
-    },
-    {
-      "closing": false,
-      "date": "2026-08-31",
-      "opening": true
-    },
-    {
-      "closing": true,
-      "date": "2026-09-01",
-      "opening": true
-    },
-    {
-      "closing": true,
-      "date": "2026-09-02",
-      "opening": true
-    },
-    {
-      "closing": false,
-      "date": "2026-09-03",
-      "opening": true
-    },
-    {
-      "closing": true,
-      "date": "2026-09-04",
-      "opening": true
-    },
-    {
-      "closing": true,
-      "date": "2026-09-07",
-      "opening": true
-    },
-    {
-      "closing": true,
-      "date": "2026-09-08",
-      "opening": true
-    },
-    {
-      "closing": true,
-      "date": "2026-09-09",
-      "opening": true
-    },
-    {
-      "closing": true,
-      "date": "2026-09-10",
-      "opening": true
-    },
-    {
-      "closing": true,
-      "date": "2026-09-11",
-      "opening": true
-    },
-    {
-      "closing": true,
-      "date": "2026-09-14",
-      "opening": true
-    },
-    {
-      "closing": true,
-      "date": "2026-09-15",
-      "opening": true
-    },
-    {
-      "closing": true,
-      "date": "2026-09-16",
-      "opening": true
-    },
-    {
-      "closing": true,
-      "date": "2026-09-17",
-      "opening": true
-    },
-    {
-      "closing": true,
-      "date": "2026-09-18",
-      "opening": true
-    },
-    {
-      "closing": false,
-      "date": "2026-09-21",
-      "opening": true
-    },
-    {
-      "closing": true,
-      "date": "2026-09-22",
-      "opening": true
-    },
-    {
-      "closing": false,
-      "date": "2026-09-23",
-      "opening": true
-    },
-    {
-      "closing": true,
-      "date": "2026-09-28",
-      "opening": true
-    },
-    {
-      "closing": true,
-      "date": "2026-09-29",
-      "opening": true
-    },
-    {
-      "closing": true,
-      "date": "2026-09-30",
-      "opening": true
-    },
-    {
-      "closing": true,
-      "date": "2026-10-01",
-      "opening": true
-    },
-    {
-      "closing": true,
-      "date": "2026-10-02",
-      "opening": true
-    },
-    {
-      "closing": true,
-      "date": "2026-10-06",
-      "opening": true
-    },
-    {
-      "closing": true,
-      "date": "2026-10-07",
-      "opening": true
-    },
-    {
-      "closing": true,
-      "date": "2026-10-08",
-      "opening": true
-    },
-    {
-      "closing": true,
-      "date": "2026-10-12",
-      "opening": true
-    },
-    {
-      "closing": true,
-      "date": "2026-10-13",
-      "opening": true
-    },
-    {
-      "closing": true,
-      "date": "2026-10-14",
-      "opening": true
-    },
-    {
-      "closing": true,
-      "date": "2026-10-15",
-      "opening": true
-    },
-    {
-      "closing": true,
-      "date": "2026-10-16",
-      "opening": true
-    },
-    {
-      "closing": true,
-      "date": "2026-10-19",
-      "opening": true
-    },
-    {
-      "closing": true,
-      "date": "2026-10-20",
-      "opening": true
-    },
-    {
-      "closing": true,
-      "date": "2026-10-21",
-      "opening": true
-    },
-    {
-      "closing": true,
-      "date": "2026-10-22",
-      "opening": true
-    },
-    {
-      "closing": true,
-      "date": "2026-10-23",
-      "opening": true
-    },
-    {
-      "closing": true,
-      "date": "2026-10-26",
-      "opening": true
-    },
-    {
-      "closing": true,
-      "date": "2026-10-27",
-      "opening": true
-    },
-    {
-      "closing": true,
-      "date": "2026-10-28",
-      "opening": true
-    },
-    {
-      "closing": true,
-      "date": "2026-10-29",
-      "opening": true
-    },
-    {
-      "closing": false,
-      "date": "2026-10-30",
-      "opening": true
-    }
-  ],
-  "metrics": {
-    "closingDays": 47,
-    "completedSelectedTasks": 5,
-    "openingDays": 54,
-    "recordedCalendarWeeks": 12,
-    "recordedDays": 54,
-    "selectedTasks": 11
-  },
   "schemaVersion": 2,
+  "asOf": "2026-10-30",
+  "metrics": {
+    "recordedDays": 54,
+    "openingDays": 54,
+    "closingDays": 47,
+    "recordedCalendarWeeks": 12,
+    "selectedTasks": 11,
+    "completedSelectedTasks": 5
+  },
   "sources": {
-    "attendance": {
-      "available": false,
-      "file": "input/attendance.json",
-      "name": "내 출석 기록"
-    },
     "ritual": {
-      "file": "input/ritual.json",
-      "name": "리추얼 기록",
-      "periodEnd": "2026-10-30",
-      "periodStart": "2026-08-11"
+      "name": "리추얼·기록 파일",
+      "periodStart": "2026-08-11",
+      "periodEnd": "2026-10-30"
     },
     "tasks": {
       "name": "T01~T11 과제 목록",
-      "scope": "과제 목록이며 제출·완료율을 뜻하지 않습니다."
+      "scope": "과제 목록이며 전체 제출률이 아닙니다."
     }
   },
-  "storyEvidence": {
-    "date": "2026-10-20",
-    "dates": [
-      "2026-10-21",
-      "2026-10-22",
-      "2026-10-23",
-      "2026-10-26",
-      "2026-10-27",
-      "2026-10-28",
-      "2026-10-29",
-      "2026-10-30"
-    ],
-    "followingPeriod": "2026-10-21~2026-10-30",
-    "recordedDays": 8
-  },
-  "taskCatalog": [
+  "days": [
     {
-      "ability": "자기동기력",
-      "date": "2026-09",
-      "id": "T01",
-      "status": "unconfirmed",
-      "title": "소개 페이지"
+      "date": "2026-08-11",
+      "opening": true,
+      "closing": false
     },
     {
-      "ability": "자기동기력",
-      "date": "2026-10",
-      "id": "T02",
-      "status": "unconfirmed",
-      "title": "LostStars"
+      "date": "2026-08-12",
+      "opening": true,
+      "closing": true
     },
     {
-      "ability": "자기동기력",
-      "date": "2026-10",
-      "id": "T03",
-      "status": "completed",
-      "title": "Card Studio"
+      "date": "2026-08-13",
+      "opening": true,
+      "closing": true
     },
     {
-      "ability": "자기동기력",
-      "date": "2026-10",
-      "id": "T04",
-      "status": "unconfirmed",
-      "title": "실제 날씨 정보"
+      "date": "2026-08-14",
+      "opening": true,
+      "closing": true
     },
     {
-      "ability": "자기동기력",
-      "date": "2026-10",
-      "id": "T05",
-      "status": "completed",
-      "title": "AI Handoff"
+      "date": "2026-08-18",
+      "opening": true,
+      "closing": true
     },
     {
-      "ability": "자기조절력",
-      "date": "2026-10",
-      "id": "T06",
-      "status": "completed",
-      "title": "Plan Do See"
+      "date": "2026-08-19",
+      "opening": true,
+      "closing": true
     },
     {
-      "ability": "자기동기력",
-      "date": "2026-10",
-      "id": "T07",
-      "status": "unconfirmed",
-      "title": "로그인과 잠금"
+      "date": "2026-08-20",
+      "opening": true,
+      "closing": true
     },
     {
-      "ability": "자기동기력",
-      "date": "2026-10",
-      "id": "T08",
-      "status": "unconfirmed",
-      "title": "Passkey Portfolio"
+      "date": "2026-08-21",
+      "opening": true,
+      "closing": true
     },
     {
-      "ability": "대인관계력",
-      "date": "2026-10",
-      "id": "T09",
-      "status": "completed",
-      "title": "강점 서사"
+      "date": "2026-08-24",
+      "opening": true,
+      "closing": true
     },
     {
-      "ability": "자기동기력",
-      "date": "2026-10",
-      "id": "T10",
-      "status": "completed",
-      "title": "논문"
+      "date": "2026-08-25",
+      "opening": true,
+      "closing": true
     },
     {
-      "ability": "자기동기력",
-      "date": "2026-10",
-      "id": "T11",
-      "status": "unconfirmed",
-      "title": "소설"
+      "date": "2026-08-26",
+      "opening": true,
+      "closing": false
+    },
+    {
+      "date": "2026-08-27",
+      "opening": true,
+      "closing": true
+    },
+    {
+      "date": "2026-08-28",
+      "opening": true,
+      "closing": true
+    },
+    {
+      "date": "2026-08-31",
+      "opening": true,
+      "closing": false
+    },
+    {
+      "date": "2026-09-01",
+      "opening": true,
+      "closing": true
+    },
+    {
+      "date": "2026-09-02",
+      "opening": true,
+      "closing": true
+    },
+    {
+      "date": "2026-09-03",
+      "opening": true,
+      "closing": false
+    },
+    {
+      "date": "2026-09-04",
+      "opening": true,
+      "closing": true
+    },
+    {
+      "date": "2026-09-07",
+      "opening": true,
+      "closing": true
+    },
+    {
+      "date": "2026-09-08",
+      "opening": true,
+      "closing": true
+    },
+    {
+      "date": "2026-09-09",
+      "opening": true,
+      "closing": true
+    },
+    {
+      "date": "2026-09-10",
+      "opening": true,
+      "closing": true
+    },
+    {
+      "date": "2026-09-11",
+      "opening": true,
+      "closing": true
+    },
+    {
+      "date": "2026-09-14",
+      "opening": true,
+      "closing": true
+    },
+    {
+      "date": "2026-09-15",
+      "opening": true,
+      "closing": true
+    },
+    {
+      "date": "2026-09-16",
+      "opening": true,
+      "closing": true
+    },
+    {
+      "date": "2026-09-17",
+      "opening": true,
+      "closing": true
+    },
+    {
+      "date": "2026-09-18",
+      "opening": true,
+      "closing": true
+    },
+    {
+      "date": "2026-09-21",
+      "opening": true,
+      "closing": false
+    },
+    {
+      "date": "2026-09-22",
+      "opening": true,
+      "closing": true
+    },
+    {
+      "date": "2026-09-23",
+      "opening": true,
+      "closing": false
+    },
+    {
+      "date": "2026-09-28",
+      "opening": true,
+      "closing": true
+    },
+    {
+      "date": "2026-09-29",
+      "opening": true,
+      "closing": true
+    },
+    {
+      "date": "2026-09-30",
+      "opening": true,
+      "closing": true
+    },
+    {
+      "date": "2026-10-01",
+      "opening": true,
+      "closing": true
+    },
+    {
+      "date": "2026-10-02",
+      "opening": true,
+      "closing": true
+    },
+    {
+      "date": "2026-10-06",
+      "opening": true,
+      "closing": true
+    },
+    {
+      "date": "2026-10-07",
+      "opening": true,
+      "closing": true
+    },
+    {
+      "date": "2026-10-08",
+      "opening": true,
+      "closing": true
+    },
+    {
+      "date": "2026-10-12",
+      "opening": true,
+      "closing": true
+    },
+    {
+      "date": "2026-10-13",
+      "opening": true,
+      "closing": true
+    },
+    {
+      "date": "2026-10-14",
+      "opening": true,
+      "closing": true
+    },
+    {
+      "date": "2026-10-15",
+      "opening": true,
+      "closing": true
+    },
+    {
+      "date": "2026-10-16",
+      "opening": true,
+      "closing": true
+    },
+    {
+      "date": "2026-10-19",
+      "opening": true,
+      "closing": true
+    },
+    {
+      "date": "2026-10-20",
+      "opening": true,
+      "closing": true
+    },
+    {
+      "date": "2026-10-21",
+      "opening": true,
+      "closing": true
+    },
+    {
+      "date": "2026-10-22",
+      "opening": true,
+      "closing": true
+    },
+    {
+      "date": "2026-10-23",
+      "opening": true,
+      "closing": true
+    },
+    {
+      "date": "2026-10-26",
+      "opening": true,
+      "closing": true
+    },
+    {
+      "date": "2026-10-27",
+      "opening": true,
+      "closing": true
+    },
+    {
+      "date": "2026-10-28",
+      "opening": true,
+      "closing": true
+    },
+    {
+      "date": "2026-10-29",
+      "opening": true,
+      "closing": true
+    },
+    {
+      "date": "2026-10-30",
+      "opening": true,
+      "closing": false
     }
   ],
-  "weeks": {
-    "2026-W33": 4,
-    "2026-W34": 4,
-    "2026-W35": 5,
-    "2026-W36": 5,
-    "2026-W37": 5,
-    "2026-W38": 5,
-    "2026-W39": 3,
-    "2026-W40": 5,
-    "2026-W41": 3,
-    "2026-W42": 5,
-    "2026-W43": 5,
-    "2026-W44": 5
-  }
+  "attendance": null,
+  "candidates": [],
+  "approvedParagraphs": [],
+  "taskCatalog": [
+    {
+      "id": "T01",
+      "status": "unconfirmed"
+    },
+    {
+      "id": "T02",
+      "status": "unconfirmed"
+    },
+    {
+      "id": "T03",
+      "status": "completed"
+    },
+    {
+      "id": "T04",
+      "status": "unconfirmed"
+    },
+    {
+      "id": "T05",
+      "status": "completed"
+    },
+    {
+      "id": "T06",
+      "status": "completed"
+    },
+    {
+      "id": "T07",
+      "status": "unconfirmed"
+    },
+    {
+      "id": "T08",
+      "status": "unconfirmed"
+    },
+    {
+      "id": "T09",
+      "status": "completed"
+    },
+    {
+      "id": "T10",
+      "status": "completed"
+    },
+    {
+      "id": "T11",
+      "status": "unconfirmed"
+    }
+  ]
 }
