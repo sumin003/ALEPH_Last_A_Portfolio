@@ -57,7 +57,7 @@
     if (current) records.push(current);
     if (undated.length) {
       if (records.length) throw Error('첫 날짜 앞에 날짜 없는 내용이 있습니다. 각 기록 위에 날짜를 적어 주세요.');
-      if (!fallbackDate) throw Error('날짜 없는 TXT입니다. 아래 ‘날짜 없는 TXT의 기록일’을 지정해 주세요.');
+      if (!fallbackDate) throw Error('날짜 없는 TXT입니다. 파일 본문에 기록 날짜를 적어 주세요.');
       records.push({date: date(fallbackDate), lines: undated});
     }
     const rows = records.filter(r => r.lines.length).map(r => {
