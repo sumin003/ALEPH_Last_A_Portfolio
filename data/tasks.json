@@ -1,82 +1,92 @@
 {
-  "scope": "T01~T11 과제 목록. 제출 현황을 뜻하지 않으며 확인되지 않은 완료 상태는 unconfirmed로 남깁니다.",
+  "scope": "T01~T11 학습 과제와 마지막 과제 A·B의 공식 제목",
   "items": [
     {
       "id": "T01",
-      "title": "소개 페이지",
+      "title": "나를 소개하는 한 페이지",
       "date": "2026-09",
       "ability": "자기동기력",
       "status": "unconfirmed"
     },
     {
       "id": "T02",
-      "title": "LostStars",
+      "title": "내가 설계한 미니게임",
       "date": "2026-10",
       "ability": "자기동기력",
       "status": "unconfirmed"
     },
     {
       "id": "T03",
-      "title": "Card Studio",
+      "title": "짤·카드 스튜디오",
       "date": "2026-10",
       "ability": "자기동기력",
       "status": "completed"
     },
     {
       "id": "T04",
-      "title": "실제 날씨 정보",
+      "title": "오늘의 진짜 정보판 — 데이터가 안 올 때",
       "date": "2026-10",
       "ability": "자기동기력",
       "status": "unconfirmed"
     },
     {
       "id": "T05",
-      "title": "AI Handoff",
+      "title": "대화가 끊겨도 이어지는 프로젝트",
       "date": "2026-10",
       "ability": "자기동기력",
       "status": "completed"
     },
     {
       "id": "T06",
-      "title": "Plan Do See",
+      "title": "플랜두씨 다이어리 1 — 내 계획과 실제를 담는 앱",
       "date": "2026-10",
       "ability": "자기조절력",
       "status": "completed"
     },
     {
       "id": "T07",
-      "title": "로그인과 잠금",
+      "title": "플랜두씨 다이어리 2 — 인증을 붙이고, 어떻게 붙였는지 설명하기",
       "date": "2026-10",
       "ability": "자기동기력",
       "status": "unconfirmed"
     },
     {
       "id": "T08",
-      "title": "Passkey Portfolio",
+      "title": "내 소개 페이지에 패스키 달기 — 비밀번호 없이 나만 들어가기",
       "date": "2026-10",
       "ability": "자기동기력",
       "status": "unconfirmed"
     },
     {
       "id": "T09",
-      "title": "강점 서사",
+      "title": "나를 말하는 에이전트: 리추얼 기록에서 내 강점과 이야기를 찾습니다",
       "date": "2026-10",
       "ability": "대인관계력",
       "status": "completed"
     },
     {
       "id": "T10",
-      "title": "논문",
+      "title": "AI와 함께 쓰는 첫 논문 — 가설에서 결론까지",
       "date": "2026-10",
       "ability": "자기동기력",
       "status": "completed"
     },
     {
       "id": "T11",
-      "title": "소설",
+      "title": "나에 대한 3만 자 장편소설 — 내 삶을 소재로, 진한 감동의 서사",
       "date": "2026-10",
       "ability": "자기동기력",
       "status": "unconfirmed"
+    }
+  ],
+  "milestones": [
+    {
+      "id": "마지막 과제 A",
+      "title": "마지막 A · 나를 소개하는 사이트, 그리고 계속 새로 쓰는 장치"
+    },
+    {
+      "id": "마지막 과제 B",
+      "title": "마지막 B · 내 논문을 반영한 애플리케이션"
     }
   ]
 }

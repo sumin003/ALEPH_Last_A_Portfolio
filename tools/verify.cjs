@@ -36,6 +36,8 @@ try{
   const txt=E.generate(E.parseRecordFile('2026-10-30\n다시 공부했습니다.\n2026-10-30\n회고: 동료와 함께 도움을 나누었습니다.','test.txt'));
   assert.equal(txt.metrics.recordedDays,1);assert.equal(txt.metrics.closingDays,1);checks.txtDatesAndDuplicates=true;checks.invalidDatesRejected=true;
   assert(E.approved({approvedParagraphs:[{ability:'자기동기력',text:'<script>alert(1)</script>'}]}).includes('&lt;script&gt;'));checks.htmlEscaping=true;
+  assert.equal(result.taskCatalog[0].title,'나를 소개하는 한 페이지');assert.equal(result.taskCatalog[10].title,'나에 대한 3만 자 장편소설 — 내 삶을 소재로, 진한 감동의 서사');assert.equal((baselineHtml.match(/<th scope="row">/g)||[]).length,13);checks.officialTaskList=true;
+  assert(!baselineHtml.includes('완료·제출률을 뜻하지 않습니다.'));checks.requestedDescriptionRemoved=true;
   const story=/<article class="story"[\s\S]*?<\/article>/.exec(baselineHtml)[0];assert(story.includes('2026년 10월 20일'));checks.datedStoryScene=true;
   const report={checks,first,second,note:'승인 동작 검사는 임시 폴더에서만 실행했습니다. 이 결과는 사용자 승인이나 동료 피드백을 뜻하지 않습니다.'};
   fs.mkdirSync(path.join(root,'verification'),{recursive:true});fs.writeFileSync(path.join(root,'verification/comparison.json'),JSON.stringify(report,null,2)+'\n');console.log(JSON.stringify({passed:Object.keys(checks).length,checks}));

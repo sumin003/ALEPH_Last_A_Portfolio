@@ -1,6 +1,8 @@
 (function (root) {
   'use strict';
   const abilities = ['자기조절력', '대인관계력', '자기동기력'];
+  const taskTitles = {"T01": "나를 소개하는 한 페이지", "T02": "내가 설계한 미니게임", "T03": "짤·카드 스튜디오", "T04": "오늘의 진짜 정보판 — 데이터가 안 올 때", "T05": "대화가 끊겨도 이어지는 프로젝트", "T06": "플랜두씨 다이어리 1 — 내 계획과 실제를 담는 앱", "T07": "플랜두씨 다이어리 2 — 인증을 붙이고, 어떻게 붙였는지 설명하기", "T08": "내 소개 페이지에 패스키 달기 — 비밀번호 없이 나만 들어가기", "T09": "나를 말하는 에이전트: 리추얼 기록에서 내 강점과 이야기를 찾습니다", "T10": "AI와 함께 쓰는 첫 논문 — 가설에서 결론까지", "T11": "나에 대한 3만 자 장편소설 — 내 삶을 소재로, 진한 감동의 서사"};
+  const followUpTasks = [{"id": "마지막 과제 A", "title": "마지막 A · 나를 소개하는 사이트, 그리고 계속 새로 쓰는 장치"}, {"id": "마지막 과제 B", "title": "마지막 B · 내 논문을 반영한 애플리케이션"}];
   const words = {
     '자기조절력': ['감정', '화가', '짜증', '차분', '침착', '조절', '충분히 자', '잠도', '휴식'],
     '대인관계력': ['서로', '도와', '도움', '동료', '함께', '챙겨', '소통', '질문'],
@@ -95,7 +97,7 @@
     if (!days.length) throw Error('내용이 있는 기록을 찾지 못했습니다.');
     const taskRows = taskInput?.items || taskInput?.tasks || (Array.isArray(taskInput) ? taskInput : []);
     if (!Array.isArray(taskRows)) throw Error('과제 목록에는 items 배열이 필요합니다.');
-    const tasks = taskRows.map(t => ({id: t.id, status: ['completed','in_progress','planned'].includes(t.status) ? t.status : 'unconfirmed'}));
+    const tasks = taskRows.map(t => ({id: t.id, title: String(taskTitles[t.id] || t.title || '').slice(0, 240), status: ['completed','in_progress','planned'].includes(t.status) ? t.status : 'unconfirmed'}));
     const taskIds = tasks.map(x => x.id);
     if (taskIds.some(x => !/^T(?:0[1-9]|1[01])$/.test(x)) || new Set(taskIds).size !== taskIds.length) throw Error('과제 ID는 중복 없는 T01~T11이어야 합니다.');
     let attendance = null;
@@ -122,10 +124,10 @@
         closingDays: days.filter(d => d.closing).length, recordedCalendarWeeks: new Set(days.map(d => week(d.date))).size,
         selectedTasks: tasks.length, completedSelectedTasks: tasks.filter(t => t.status === 'completed').length },
       sources: { ritual: { name: '리추얼·기록 파일', periodStart: days[0].date, periodEnd: days.at(-1).date },
-        tasks: { name: 'T01~T11 과제 목록', scope: '과제 목록이며 전체 제출률이 아닙니다.' } },
+        tasks: { name: 'T01~T11 과제 목록', scope: 'T01~T11 학습 과제' } },
       days: days.map(({date, opening, closing}) => ({date, opening, closing})),
       attendance, candidates: candidates.sort((a, b) => a.ability.localeCompare(b.ability, 'ko') || a.date.localeCompare(b.date)),
-      approvedParagraphs: [], taskCatalog: tasks
+      approvedParagraphs: [], taskCatalog: tasks, followUpTasks
     };
     return result;
   }
@@ -135,12 +137,14 @@
     const values = [[m.recordedDays, '일', '기록을 남긴 날', '시작 또는 마무리 기록이 있는 날짜를 하루에 한 번 셌습니다.', '리추얼·기록 파일'],
       [m.closingDays, '일', '하루를 돌아본 날', '마무리 기록에 내용이 있는 날짜만 셌습니다.', '리추얼·기록 파일'],
       [m.recordedCalendarWeeks, '주', '기록이 있는 달력주', '월요일~일요일 기준이며 공식 교육 주차와는 구분합니다.', '리추얼·기록 파일'],
-      [m.selectedTasks, '개', 'T01~T11 과제 목록', 'T01부터 T11까지의 과제 목록입니다. 완료·제출률을 뜻하지 않습니다.', 'T01~T11 과제 목록']];
+      [m.selectedTasks, '개', 'T01~T11 과제 목록', 'T01부터 T11까지의 학습 과제입니다.', 'T01~T11 과제 목록']];
     if (data.attendance) values.push([data.attendance.attendedDays, '일', '출석한 날', '대상 수업일 '+data.attendance.scheduledDays+'일', '내 출석 기록']);
     const cards = values.map(([n,u,t,d,source]) => '<div class="metric"><p class="metric-value">'+esc(n)+'<span>'+u+'</span></p><h3>'+t+'</h3><p>'+d+'</p><p class="metric-source">출처: '+source+(source==='리추얼·기록 파일'?' · '+esc(s.periodStart)+'~'+esc(s.periodEnd):'')+'</p></div>').join('');
     const after = (data.days || []).filter(d => d.date > '2026-10-20' && d.date <= '2026-10-30').length;
     const story = after ? '<aside class="recovery"><h3>진도가 늦었던 날 이후에도, '+after+'일의 기록</h3><p>공부가 계획보다 늦었던 시기에도 충분히 쉬고 다시 해보자는 말을 남겼습니다. 그 뒤에도 기록을 이어가며 다음 날을 준비했습니다.</p><p class="metric-source">출처: 리추얼 기록 · 2026.10.21~10.30 기록 '+after+'일</p><a class="text-link" href="#slow-days">당시의 이야기 읽기</a></aside>' : '';
-    return '<div class="section-head"><h2 id="numbers-title">숫자로 보는 과정</h2><p>'+esc(data.asOf)+' 기준</p></div><p class="section-lead">뜻대로 되지 않은 날에도 기록을 이어갔습니다.</p><div class="metrics">'+cards+'</div>'+story+'<p><a class="text-link record-entry" href="#record-refresh">리추얼·기록 파일로 갱신하기</a></p><details class="source-details"><summary>숫자의 출처와 계산 기준</summary><div><p>기록 날짜를 중복 제거했습니다. 기록 '+esc(m.recordedDays)+'일, 시작 '+esc(m.openingDays)+'일, 마무리 '+esc(m.closingDays)+'일입니다. 주 수는 월~일 기준입니다. 기록 수는 출석일·능력 점수와 다르며, 과제 목록은 T01~T11을 대상으로 합니다.</p><p>출처: 리추얼·기록 JSON·TXT 파일 / T01~T11 과제 목록 / 실제 출석 파일이 있을 때에만 출석 수치 표시</p><a class="text-link" href="#record-refresh">새 기록 반영하기</a></div></details>';
+    const catalog = (data.taskCatalog || Object.keys(taskTitles).map(id => ({id}))).map(t => ({id:t.id,title:taskTitles[t.id] || t.title || ''}));
+    const catalogHtml = '<details class="source-details task-catalog"><summary>13개 과제 한눈에 보기</summary><div class="task-table-wrap"><table><caption>학습 과제와 마지막 과제</caption><thead><tr><th scope="col">코드</th><th scope="col">제목</th></tr></thead><tbody>'+catalog.concat(data.followUpTasks || followUpTasks).map(t => '<tr><th scope="row">'+esc(t.id)+'</th><td>'+esc(t.title)+'</td></tr>').join('')+'</tbody></table></div></details>';
+    return '<div class="section-head"><h2 id="numbers-title">숫자로 보는 과정</h2><p>'+esc(data.asOf)+' 기준</p></div><p class="section-lead">뜻대로 되지 않은 날에도 기록을 이어갔습니다.</p><div class="metrics">'+cards+'</div>'+catalogHtml+story+'<p><a class="text-link record-entry" href="#record-refresh">리추얼·기록 파일로 갱신하기</a></p><details class="source-details"><summary>숫자의 출처와 계산 기준</summary><div><p>기록 날짜를 중복 제거했습니다. 기록 '+esc(m.recordedDays)+'일, 시작 '+esc(m.openingDays)+'일, 마무리 '+esc(m.closingDays)+'일입니다. 주 수는 월~일 기준입니다. 기록 수는 출석일·능력 점수와 다르며, 과제 목록은 T01~T11을 대상으로 합니다.</p><p>출처: 리추얼·기록 JSON·TXT 파일 / T01~T11 과제 목록 / 실제 출석 파일이 있을 때에만 출석 수치 표시</p><a class="text-link" href="#record-refresh">새 기록 반영하기</a></div></details>';
   }
   function approved(data) {
     return (data.approvedParagraphs || []).map(x => '<section class="approved-entry"><h3>'+esc(x.ability)+'</h3><p>'+esc(x.text)+'</p></section>').join('');
